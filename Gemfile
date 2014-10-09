@@ -5,6 +5,8 @@ ruby '2.1.2'
 gem 'rails', '4.1.6'
 # Use postgresql as the database for Active Record
 gem 'pg'
+# Use figaro for storing enviorment variables
+gem 'figaro'
 # HAML for templating
 gem 'haml-rails'
 # Use foundation for the CSS framework
