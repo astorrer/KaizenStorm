@@ -9,6 +9,8 @@ gem 'pg'
 gem 'figaro'
 # HAML for templating
 gem 'haml-rails'
+# Use Simpleform DSL
+gem 'simple_form'
 # Use foundation for the CSS framework
 gem 'foundation-rails' 
 # Use SCSS for stylesheets
