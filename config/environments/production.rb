@@ -1,14 +1,13 @@
 Rails.application.configure do
 
   # devise says to define default url
-  ActionMailer::Base.default_url_options = { :host => 'secure.kaizenstorm.com', :protocol => 'https' }
+  config.action_mailer.default_url_options = { :host => 'secure.kaizenstorm.com', :protocol => 'https' }
+  config.action_mailer.perform_deliveries = true
 
   ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.perform_deliveries = true
-  
   ActionMailer::Base.smtp_settings = {
     :address => "smtp.mandrillapp.com",
-    :port => 2525, # ports 587 and 2525 are also supported with STARTTLS
+    :port => 587, # ports 587 and 2525 are also supported with STARTTLS
     :enable_starttls_auto => true,
     :user_name => ENV['MANDRILL_USERNAME'],
     :password => ENV['MANDRILL_PASSWORD'],# SMTP password is any valid API key
