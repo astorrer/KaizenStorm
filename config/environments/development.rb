@@ -8,14 +8,15 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.delivery_method = :smtp
-  
+
   ActionMailer::Base.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => "587",
+    :address => "smtp.mandrillapp.com",
+    :port => 25, # ports 587 and 2525 are also supported with STARTTLS
+    :enable_starttls_auto => true,
+    :user_name => ENV["MANDRILL_USERNAME"],
+    :password => ENV["MANDRILL_PASSWORD"],# SMTP password is any valid API key
     :authentication => :plain,
-    :user_name => "support@kaizenstorm.com",
-    :password => ENV["SMTP_ENTRY"],
-    :enable_starttls_auto => true
+    :domain => 'kaizenstorm.com', # your domain to identify your server when connecting
   }
 
   # Settings specified here will take precedence over those in config/application.rb.
