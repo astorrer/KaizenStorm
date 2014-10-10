@@ -1,7 +1,7 @@
 Rails.application.configure do
 
   # devise says to define default url
-  config.action_mailer.default_url_options = { :host => 'secure.kaizenstorm.com', :protocol => 'https' }
+  config.action_mailer.default_url_options = { :host => 'kaizenstorm.com', :protocol => 'https' }
   config.action_mailer.perform_deliveries = true
 
   ActionMailer::Base.delivery_method = :smtp
