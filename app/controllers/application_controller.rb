@@ -9,4 +9,18 @@ class ApplicationController < ActionController::Base
   rescue_from ::Milia::Control::MaxTenantExceeded, :with => :max_tenants
   rescue_from ::Milia::Control::InvalidTenantAccess, :with => :invalid_tenant
 
+  # optional callback for post-authenticate_tenant! processing
+  def callback_authenticate_tenant
+    @org_name = ( Tenant.current_tenant.nil?  ?
+      "Kaizen"   :
+      Tenant.current_tenant.name 
+    )
+    # set_environment or whatever else you need for each valid session
+  end
+
+  #   org_name will be passed to layout & view
+  #   this sets the default name for all situations
+  def prep_org_name()
+    @org_name ||= "Kaizen"
+  end
 end
