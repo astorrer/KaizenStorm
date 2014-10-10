@@ -9,6 +9,8 @@ gem 'pg'
 gem 'figaro'
 # HAML for templating
 gem 'haml-rails'
+# Use Simpleform DSL
+gem 'simple_form'
 # Use foundation for the CSS framework
 gem 'foundation-rails' 
 # Use SCSS for stylesheets
@@ -17,6 +19,11 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+# Use Devise for user authentication
+gem 'devise'
+# Use Milia for multitenancy
+gem 'milia', '~>1.0'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -58,3 +65,5 @@ group :test do
 	gem "launchy", "~> 2.4.2"
 	gem "selenium-webdriver", "~> 2.43.0"
 end
+gem "recaptcha", require: "recaptcha/rails"
+gem "activerecord-session_store", github: "rails/activerecord-session_store"

@@ -1,4 +1,24 @@
 Rails.application.configure do
+   
+  # devise says to define default url
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # set up for email sending even in dev mode
+  # Don't care if the mailer can't send
+  config.action_mailer.raise_delivery_errors = false
+
+  config.action_mailer.delivery_method = :smtp
+
+  ActionMailer::Base.smtp_settings = {
+    :address => "smtp.mandrillapp.com",
+    :port => 25, # ports 587 and 2525 are also supported with STARTTLS
+    :enable_starttls_auto => true,
+    :user_name => ENV["MANDRILL_USERNAME"],
+    :password => ENV["MANDRILL_PASSWORD"],# SMTP password is any valid API key
+    :authentication => :plain,
+    :domain => 'kaizenstorm.com', # your domain to identify your server when connecting
+  }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
