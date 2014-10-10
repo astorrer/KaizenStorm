@@ -11,7 +11,7 @@ Rails.application.configure do
     :enable_starttls_auto => true,
     :user_name => ENV['MANDRILL_USERNAME'],
     :password => ENV['MANDRILL_PASSWORD'],# SMTP password is any valid API key
-    :authentication => :plain,
+    :authentication => :login,
     :domain => 'kaizenstorm.com', # your domain to identify your server when connecting
   }
   # Settings specified here will take precedence over those in config/application.rb.
