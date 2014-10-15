@@ -38,7 +38,6 @@ gem 'rails-assets-bootstrap', '~> 3.1.0'
 gem 'simple_form'
 gem 'country_select'
 gem 'rails_admin'
-gem 'figaro'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'

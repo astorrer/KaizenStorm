@@ -1,7 +1,7 @@
 defaults: &defaults
-  app_name: ENV['BASE_DOMAIN']
-  from_email: support@sampleapp.com
-  base_domain: sampleapp.com
+  app_name: KaizenStorm
+  from_email: support@kaizenstorm.com
+  base_domain: kaizenstorm.com
 
   gateway: bogus # Change this to stripe to use stripe
   credentials:
