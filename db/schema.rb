@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 4) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "accounts", force: true do |t|
     t.string   "name"
     t.string   "full_domain"
@@ -26,12 +29,12 @@ ActiveRecord::Schema.define(version: 4) do
     t.integer  "item"
     t.string   "table"
     t.integer  "month",      limit: 2
-    t.integer  "year",       limit: 5
+    t.integer  "year",       limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories"
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
 
   create_table "saas_admins", force: true do |t|
     t.string   "email",                              default: "", null: false
@@ -57,7 +60,7 @@ ActiveRecord::Schema.define(version: 4) do
     t.string   "token"
   end
 
-  add_index "subscription_affiliates", ["token"], name: "index_subscription_affiliates_on_token"
+  add_index "subscription_affiliates", ["token"], name: "index_subscription_affiliates_on_token", using: :btree
 
   create_table "subscription_discounts", force: true do |t|
     t.string   "name"
@@ -87,8 +90,8 @@ ActiveRecord::Schema.define(version: 4) do
     t.string   "subscriber_type"
   end
 
-  add_index "subscription_payments", ["subscriber_id", "subscriber_type"], name: "index_payments_on_subscriber"
-  add_index "subscription_payments", ["subscription_id"], name: "index_subscription_payments_on_subscription_id"
+  add_index "subscription_payments", ["subscriber_id", "subscriber_type"], name: "index_payments_on_subscriber", using: :btree
+  add_index "subscription_payments", ["subscription_id"], name: "index_subscription_payments_on_subscription_id", using: :btree
 
   create_table "subscription_plans", force: true do |t|
     t.string   "name"
@@ -120,7 +123,7 @@ ActiveRecord::Schema.define(version: 4) do
     t.integer  "user_limit"
   end
 
-  add_index "subscriptions", ["subscriber_id", "subscriber_type"], name: "index_subscriptions_on_subscriber"
+  add_index "subscriptions", ["subscriber_id", "subscriber_type"], name: "index_subscriptions_on_subscriber", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -140,8 +143,8 @@ ActiveRecord::Schema.define(version: 4) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["account_id"], name: "index_users_on_account_id"
-  add_index "users", ["email", "account_id"], name: "index_users_on_email_and_account_id", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["account_id"], name: "index_users_on_account_id", using: :btree
+  add_index "users", ["email", "account_id"], name: "index_users_on_email_and_account_id", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
