@@ -1,6 +1,20 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.default_url_options = { :host => 'kaizenstorm.com', :protocol => 'https' }
+  config.action_mailer.perform_deliveries = true
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address => "smtp.mandrillapp.com",
+    :port => 587, # ports 587 and 2525 are also supported with STARTTLS
+    :enable_starttls_auto => true,
+    :user_name => 'app30560502@heroku.com',
+    :password => 'e27qraoWtFxYEovYVXSoaQ',# SMTP password is any valid API key
+    :authentication => :login,
+    :domain => 'kaizenstorm.com', # your domain to identify your server when connecting
+  }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
