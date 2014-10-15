@@ -1,11 +1,25 @@
 defaults: &defaults
-  app_name: ENV['APP_NAME']
-  from_email: ENV['FROM_EMAIL']
-  base_domain: ENV['BASE_DOMAIN']
+  app_name: ENV['BASE_DOMAIN']
+  from_email: support@sampleapp.com
+  base_domain: sampleapp.com
 
-  gateway: ENV['GATEWAY'] # Change this to stripe to use stripe
+  gateway: bogus # Change this to stripe to use stripe
   credentials:
     gateway:
-      :login: ENV['STRIPE_SECRET'] # stripe secret key goes here
-      :password: ENV['GATEWAY_PASSWORD'] # leave blank for stripe
-    stripe_publishable_key: ENV['STRIPE_KEY']
+      :login: demo # stripe secret key goes here
+      :password: password # leave blank for stripe
+    stripe_publishable_key: # use this to send cc info directly to stripe via javascript
+
+development:
+  <<: *defaults
+  base_domain: subscriptions.dev # Edit /etc/hosts to add subscriptions.dev, test.subscriptions.dev, etc., or use Pow: http://pow.cx
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  credentials:
+    gateway:
+      :login: demo
+      :password: password

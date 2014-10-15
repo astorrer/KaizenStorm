@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
-describe "/accounts/edit.html.erb" do
+describe "/accounts/edit.html.haml" do
 
   fixtures :users, :accounts
 
