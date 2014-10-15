@@ -1,0 +1,59 @@
+- if @creditcard.errors.full_messages.any?
+  .errorExplanation
+    %h2 Errors encountered with your payment information:
+    %ul
+      - @creditcard.errors.full_messages.each do |m|
+        %li= m
+- if @address.errors.any?
+  .errorExplanation
+    %h2 Errors encountered with your address:
+    %ul
+      - @address.errors.full_messages.each do |m|
+        %li= m
+- if @subscription && @subscription.errors.any?
+  .errorExplanation
+    %h2 Errors encountered with your payment:
+    %ul
+      - @subscription.errors.full_messages.each do |m|
+        %li= m
+= form_for @creditcard, :as => :creditcard, :url => { :action => 'billing' }, :html => { :class => 'form-horizontal' } do |f|
+  %fieldset
+    .form-group
+      %label.col-sm-2.control-label Name on card
+      .col-sm-10
+        .col-xs-5= text_field :creditcard, :first_name, :class => 'form-control'
+        .col-xs-5= text_field :creditcard, :last_name, :class => 'form-control'
+    .form-group
+      %label.col-sm-2.control-label Card number
+      .col-sm-10
+        .col-xs-5= text_field :creditcard, :number, :class => 'form-control', :required => true
+        .col-xs-5= select :creditcard, :brand, Saas::Config.gateway == "bogus" ? [['Bogus', 'bogus']] : [['Visa', 'visa'], ['MasterCard', 'master'], ['American Express', 'american_express']], {}, :class => 'form-control'
+    .form-group
+      %label.col-sm-2.control-label Expiration
+      .col-sm-10
+        .col-xs-2= select :creditcard, :month, (1 .. 12), {}, :class => 'form-control'
+        .col-xs-2= select :creditcard, :year, (Time.now.year .. 10.years.from_now.year), {}, :class => 'form-control'
+    .form-group
+      %label.col-sm-2.control-label CVV
+      .col-sm-10
+        .col-xs-2= text_field :creditcard, :verification_value, :class => 'form-control'
+    .form-group
+      %label.col-sm-2.control-label Address
+      .col-sm-10
+        .col-xs-10= text_field :address, :address1, :class => 'form-control', :required => true
+        .col-xs-10= text_field :address, :address2, :class => 'form-control'
+    .form-group
+      %label.col-sm-2.control-label City, State, Zip
+      .col-sm-10
+        .col-xs-3= text_field :address, :city, :class => 'form-control', :required => true
+        .col-xs-3= text_field :address, :state, :class => 'form-control'
+        .col-xs-3= text_field :address, :zip, :class => 'form-control'
+    .form-group
+      %label.col-sm-2.control-label Country
+      .col-sm-10
+        .col-xs-5= country_select :address, :country, ['United States', 'Canada'], {}, :class => 'form-control', :required => true
+  .form-group
+    %label.col-sm-2.control-label
+    .col-sm-10
+      .col-sm-10
+        = submit_or_cancel '/account', 'Update billing information', :disabled => (Saas::Config.gateway == 'stripe' and Saas::Config.credentials['stripe_publishable_key'])
