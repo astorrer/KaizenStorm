@@ -34,7 +34,7 @@ end
 gem 'saas-kit'
 gem 'devise'
 gem 'inherited_resources'
-gem 'rails-assets-bootstrap', '~> 3.1.0'
+gem 'rails-assets-bootstrap', '~> 3.2.0'
 gem 'simple_form'
 gem 'country_select'
 gem 'rails_admin'
