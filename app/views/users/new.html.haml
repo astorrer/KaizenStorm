@@ -1,9 +1,0 @@
-%h1= @page_title = 'Create User'
-- if current_account.reached_user_limit?
-  %p
-    You have reached the maximum number of users you can have with your account level.  You can either delete some of your users or
-    %a{:href => "/account/plan"} upgrade your account
-    to be able to create a new user.
-- else
-  = simple_form_for @user do |f|
-    = render :partial => "form", :locals => { :f => f }
