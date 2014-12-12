@@ -1,21 +1,28 @@
-%h1 Listing facilities
+.row
+  .col-lg-12
+    %h1.page-header
+      Manage Facilities
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th
-      %th
-      %th
+.row
+  .col-lg-12
+    = link_to new_facility_path do
+      .btn.btn-default
+        Create New
+        %i.fa.fa-fw.fa-plus
+    %hr
+    .table-responsive
+      %table.table.table-bordered.table-hover
+        %thead
+          %tr
+            %th Name
+            %th
+            %th
+            %th
       
-  %tbody
-    - @facilities.each do |facility|
-      %tr
-        %td= facility.name
-        %td= link_to 'Show', facility
-        %td= link_to 'Edit', edit_facility_path(facility)
-        %td= link_to 'Destroy', facility, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Facility', new_facility_path
+        %tbody
+          - @facilities.each do |facility|
+            %tr
+              %td= facility.name
+              %td= link_to 'Show', facility
+              %td= link_to 'Edit', edit_facility_path(facility)
+              %td= link_to 'Destroy', facility, :method => :delete, :data => { :confirm => 'Are you sure?' }
