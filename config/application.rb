@@ -34,17 +34,7 @@ module KaizenStorm
     # Use Less instead of Sass
     config.app_generators.stylesheet_engine :less
 
-    config.generators do |g|
-      g.stylesheets false,
-      g.test_framework :rspec,
-      fixtures: true,
-      # Enable/Disable the auto generated tests.
-      # view_specs: false,
-      # helper_specs: false,
-      # routing_specs: false,
-      # controller_specs: false,
-      # request_specs: false
-      g.fixture_replacement :factory_girl, dir: "spec/factories" # Use FactoryGirl instead of Fixtures
-    end
+    config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   end
 end
