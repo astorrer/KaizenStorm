@@ -86,7 +86,7 @@ GEM
     ffi (1.9.6)
     globalid (0.3.0)
       activesupport (>= 4.1.0)
-    haml (4.0.5)
+    haml (4.1.0.beta.1)
       tilt
     haml-rails (0.6.0)
       actionpack (>= 4.0.1)
@@ -160,8 +160,8 @@ GEM
     rdoc (4.2.0)
       json (~> 1.4)
     ref (1.0.5)
-    responders (1.1.2)
-      railties (>= 3.2, < 4.2)
+    responders (2.0.2)
+      railties (>= 4.2.0.alpha, < 5)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -243,6 +243,7 @@ DEPENDENCIES
   launchy (~> 2.4.2)
   less-rails
   rails (= 4.2.0.rc2)
+  responders
   rspec-rails (~> 3.1.0)
   sdoc (~> 0.4.0)
   selenium-webdriver (~> 2.43.0)
