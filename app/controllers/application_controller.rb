@@ -4,6 +4,18 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
+  # Layouts Config
+  layout :layout_by_resource
+
+  # Select layouts via the controller.
+  def layout_by_resource
+    if devise_controller?
+      "layout_devise"
+    else
+      "application"
+    end
+  end
+
   protected
   
   def configure_permitted_parameters
