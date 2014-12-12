@@ -5,8 +5,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0.rc2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0'
+# Use HAML as the default templating language
+gem 'haml-rails'
+# Use less for stylesheets
+gem 'less-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -33,6 +35,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Use Rspec instead of TEST:Unit
+  gem "rspec-rails", "~> 3.1.0"
+  # Use FactoryGirl instead of Fixtures
+  gem "factory_girl_rails", "~> 4.4.1"
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
@@ -43,3 +50,10 @@ group :development, :test do
   gem 'spring'
 end
 
+group:test do
+  gem "faker", "~> 1.4.3"
+  gem "capybara", "~> 2.4.3"
+  gem "database_cleaner", "~> 1.3.0"
+  gem "launchy", "~> 2.4.2"
+  gem "selenium-webdriver", "~> 2.43.0"
+end
