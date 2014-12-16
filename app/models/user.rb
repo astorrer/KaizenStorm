@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  after_create :assign_submitter_role
+  after_create :assign_active_state
+
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,6 +12,7 @@ class User < ActiveRecord::Base
    # This is in addition to a real persisted field like 'username'
    attr_accessor :login
 
+  # Overwrite Devise for Usernames & Emails
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -16,6 +21,22 @@ class User < ActiveRecord::Base
       where(conditions).first
     end
   end
-  
+
+  # Modify Devise to Allow Manual Account Activation
+  def active_for_authentication?
+    # Uncomment the below debug statement to view the properties of the returned self model values.
+    # logger.debug self.to_yaml
+    super && active_account?
+  end
+
   validates :username, :uniqueness => { :case_sensitive => false } # , :format => { ... } # etc.
+
+  protected
+    def assign_submitter_role
+      self.add_role "submitter"
+    end
+
+    def assign_active_state
+      self.update(:active_account => false)
+    end
 end

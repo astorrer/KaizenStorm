@@ -6,6 +6,18 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   devise_for :users
+
+  resources :users do
+    member do
+      post 'assign_admin_role'
+      post 'demote_from_admin_role'
+      post 'assign_reviewer_role'
+      post 'demote_from_reviewer_role'
+      post 'deactivate_account'
+      post 'activate_account'
+    end
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
