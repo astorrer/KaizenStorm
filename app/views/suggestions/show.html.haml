@@ -1,0 +1,57 @@
+%p#notice= notice
+
+%p
+  %b Reviewed at:
+  = @suggestion.reviewed_at
+%p
+  %b Completed at:
+  = @suggestion.completed_at
+%p
+  %b Verified at:
+  = @suggestion.verified_at
+%p
+  %b Completed:
+  = @suggestion.completed
+%p
+  %b Verified:
+  = @suggestion.verified
+%p
+  %b Meets theme:
+  = @suggestion.meets_theme
+%p
+  %b Funded:
+  = @suggestion.funded
+%p
+  %b Suggestion type:
+  = @suggestion.suggestion_type
+%p
+  %b Status:
+  = @suggestion.status
+%p
+  %b Statement:
+  = @suggestion.statement
+%p
+  %b Facility:
+  = @suggestion.facility_id
+%p
+  %b Department:
+  = @suggestion.department_id
+%p
+  %b Reviewed:
+  = @suggestion.reviewed
+%p
+  %b Current state:
+  = @suggestion.current_state
+%p
+  %b Ideal state:
+  = @suggestion.ideal_state
+%p
+  %b Benefits:
+  = @suggestion.benefits
+%p
+  %b Line:
+  = @suggestion.line
+
+= link_to 'Edit', edit_suggestion_path(@suggestion)
+\|
+= link_to 'Back', suggestions_path

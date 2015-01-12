@@ -1,0 +1,55 @@
+.row
+  .col-lg-12
+    %h1.page-header
+      Suggestions
+      = link_to new_suggestion_path do
+        .btn.btn-default.btn-xs
+          Create New
+          %i.fa.fa-fw.fa-plus
+%table.table
+  %thead
+    %tr
+      %th Status
+      %th Reviewed
+      %th Completed
+      %th Verified
+      %th Funded
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @suggestions.each do |suggestion|
+      %tr
+        %td= suggestion.status
+        %td
+          - if suggestion.reviewed?
+            %i.fa.fa-fw.fa-check-square-o
+          -else
+            %i.fa.fa-fw.fa-minus-square-o
+        %td
+          - if suggestion.completed?
+            %i.fa.fa-fw.fa-check-square-o
+          -else
+            %i.fa.fa-fw.fa-minus-square-o
+        %td
+          - if suggestion.verified?
+            %i.fa.fa-fw.fa-check-square-o
+          -else
+            %i.fa.fa-fw.fa-minus-square-o
+        %td
+          - if suggestion.funded?
+            %i.fa.fa-fw.fa-check-square-o
+          -else
+            %i.fa.fa-fw.fa-minus-square-o
+        %td
+          = link_to suggestion do
+            %i.fa.fa-fw.fa-external-link
+            View
+        %td
+          = link_to edit_suggestion_path(suggestion) do
+            %i.fa.fa-fw.fa-edit
+            Edit
+        %td= link_to 'Destroy', suggestion, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br

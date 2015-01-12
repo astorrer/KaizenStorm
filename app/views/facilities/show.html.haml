@@ -1,0 +1,119 @@
+.row
+  .col-lg-12
+    %h1.page-header
+      = @facility.name
+
+    %p#notice= notice
+
+  .row
+    .col-md-12
+      .panel.with-nav-tabs.panel-default
+        .panel-heading
+          %ul.nav.nav-tabs
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab1"}
+                %i.fa.fa-location-arrow 
+                Submitted
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab2"}
+                %i.fa.fa-cube
+                Reviewed
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab3"}
+                %i.fa.fa-gear
+                Completed
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab4"}
+                %i.fa.fa-crosshairs  
+                Verified
+            %li
+              %a{"data-toggle" => "tab", :href => "#tab5"}
+                %i.fa.fa-clock-o  
+                Funded
+        .panel-body
+          .tab-content
+            #tab1.tab-pane.fade.in
+              .table-responsive
+                %table.table.table-bordered
+                  %thead
+                    %tr
+                      %th Name
+                      %th
+                  %tbody
+                    - @facility.suggestions.each do |suggestion|
+                      %tr
+                        %td= suggestion.id
+                        %td
+                          .btn-group
+                            = link_to edit_suggestion_path(suggestion), class: 'btn btn-default btn-sm' do
+                              %i.fa.fa-fw.fa-edit
+                            = link_to suggestion, :method => :delete, class: 'btn btn-danger btn-sm', :data => { :confirm => 'Are you sure?' } do
+                              %i.fa.fa-fw.fa-trash
+            #tab2.tab-pane.fade.in
+              .table-responsive
+                %table.table.table-bordered
+                  %thead
+                    %tr
+                      %th Name
+                      %th
+                  %tbody
+                    - @facility.suggestions.reviewed.each do |suggestion|
+                      %tr
+                        %td= suggestion.id
+                        %td
+                          .btn-group
+                            = link_to edit_suggestion_path(suggestion), class: 'btn btn-default btn-sm' do
+                              %i.fa.fa-fw.fa-edit
+                            = link_to suggestion, :method => :delete, class: 'btn btn-danger btn-sm', :data => { :confirm => 'Are you sure?' } do
+                              %i.fa.fa-fw.fa-trash
+            #tab3.tab-pane.fade.in
+              .table-responsive
+                %table.table.table-bordered
+                  %thead
+                    %tr
+                      %th Name
+                      %th
+                  %tbody
+                    - @facility.suggestions.completed.each do |suggestion|
+                      %tr
+                        %td= suggestion.id
+                        %td
+                          .btn-group
+                            = link_to edit_suggestion_path(suggestion), class: 'btn btn-default btn-sm' do
+                              %i.fa.fa-fw.fa-edit
+                            = link_to suggestion, :method => :delete, class: 'btn btn-danger btn-sm', :data => { :confirm => 'Are you sure?' } do
+                              %i.fa.fa-fw.fa-trash
+            #tab4.tab-pane.fade.in
+              .table-responsive
+                %table.table.table-bordered
+                  %thead
+                    %tr
+                      %th Name
+                      %th
+                  %tbody
+                    - @facility.suggestions.verified.each do |suggestion|
+                      %tr
+                        %td= suggestion.id
+                        %td
+                          .btn-group
+                            = link_to edit_suggestion_path(suggestion), class: 'btn btn-default btn-sm' do
+                              %i.fa.fa-fw.fa-edit
+                            = link_to suggestion, :method => :delete, class: 'btn btn-danger btn-sm', :data => { :confirm => 'Are you sure?' } do
+                              %i.fa.fa-fw.fa-trash
+            #tab5.tab-pane.fade.in
+              .table-responsive
+                %table.table.table-bordered
+                  %thead
+                    %tr
+                      %th Name
+                      %th
+                  %tbody
+                    - @facility.suggestions.funded.each do |suggestion|
+                      %tr
+                        %td= suggestion.id
+                        %td
+                          .btn-group
+                            = link_to edit_suggestion_path(suggestion), class: 'btn btn-default btn-sm' do
+                              %i.fa.fa-fw.fa-edit
+                            = link_to suggestion, :method => :delete, class: 'btn btn-danger btn-sm', :data => { :confirm => 'Are you sure?' } do
+                              %i.fa.fa-fw.fa-trash

@@ -1,0 +1,29 @@
+= form_for @suggestion do |f|
+  - if @suggestion.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@suggestion.errors.count, "error")} prohibited this suggestion from being saved:"
+      %ul
+        - @suggestion.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :facility_id
+    = f.collection_select :facility_id, Facility.all, :id, :name, {include_blank: true}, { data: { dynamic_selectable_url: dynamic_select_departments_path(':facility_id'), dynamic_selectable_target: '#suggestion_department_id' }, class: 'form-control' } 
+  .form-group
+    = f.label :department_id
+    = f.collection_select :department_id, @suggestion.facility.try(:departments) || [], :id, :name, { :include_blank => false }, class: 'form-control'
+  .form-group
+    = f.label :line
+    = f.text_field :line, class: 'form-control'
+  .form-group
+    = f.label :current_state
+    = f.text_area :current_state, class: 'form-control'
+  .form-group
+    = f.label :ideal_state
+    = f.text_area :ideal_state, class: 'form-control'
+  .form-group
+    = f.label :benefits
+    = f.text_area :benefits, class: 'form-control'
+
+  = link_to 'Back', suggestions_path, class: 'btn btn-warning'
+  = f.submit 'Save', class: 'btn btn-default'
