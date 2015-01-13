@@ -1,15 +1,11 @@
 class DepartmentsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_department, only: [:show, :edit, :update, :destroy]
+  before_action :set_department, only: [ :edit, :update, :destroy]
 
   respond_to :html
 
   def index
-  end
-
-  def show
-    respond_with(@department)
   end
 
   def new
@@ -23,12 +19,12 @@ class DepartmentsController < ApplicationController
   def create
     @department = Department.new(department_params)
     @department.save
-    respond_with(@department)
+    redirect_to departments_path
   end
 
   def update
     @department.update(department_params)
-    respond_with(@department)
+    redirect_to departments_path
   end
 
   def destroy

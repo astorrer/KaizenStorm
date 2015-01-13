@@ -15,12 +15,14 @@
         %thead
           %tr
             %th Name
+            %th Facility
             %th
 
         %tbody
           - @departments.each do |department|
             %tr
               %td= department.name
+              %td= department.facility.name
               %td
                 .btn-group
                   = link_to edit_department_path(department), class: 'btn btn-default btn-sm' do
