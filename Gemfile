@@ -17,6 +17,8 @@ gem 'therubyracer', platforms: :ruby
 
 gem 'devise'
 gem 'responders'
+gem 'rolify'
+gem 'cancancan'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

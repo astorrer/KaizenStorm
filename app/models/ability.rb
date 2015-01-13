@@ -8,7 +8,7 @@ class Ability
       can :manage, :all
     elsif user.has_role? :reviewer
       can :manage, :all
-    elsif user.has_role :submitter
+    elsif user.has_role? :submitter
       can :manage, :all
     end
 
