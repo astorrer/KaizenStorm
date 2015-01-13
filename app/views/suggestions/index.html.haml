@@ -15,9 +15,7 @@
       %th Verified
       %th Funded
       %th
-      %th
-      %th
-      
+
   %tbody
     - @suggestions.each do |suggestion|
       %tr
@@ -43,13 +41,10 @@
           -else
             %i.fa.fa-fw.fa-minus-square-o
         %td
-          = link_to suggestion do
-            %i.fa.fa-fw.fa-external-link
-            View
-        %td
-          = link_to edit_suggestion_path(suggestion) do
-            %i.fa.fa-fw.fa-edit
-            Edit
-        %td= link_to 'Destroy', suggestion, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
+          .btn-group
+            = link_to suggestion, class: 'btn btn-default btn-sm' do
+              %i.fa.fa-fw.fa-external-link
+            = link_to edit_suggestion_path(suggestion), class: 'btn btn-default btn-sm' do
+              %i.fa.fa-fw.fa-edit
+            = link_to suggestion, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-sm' do
+              %i.fa.fa-fw.fa-trash

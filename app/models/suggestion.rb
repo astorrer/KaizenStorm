@@ -1,6 +1,7 @@
 class Suggestion < ActiveRecord::Base
   belongs_to :facility
   belongs_to :department
+  belongs_to :user
 
   scope :reviewed,        -> { where(reviewed: true) }
   scope :completed,        -> { where(completed: true) }

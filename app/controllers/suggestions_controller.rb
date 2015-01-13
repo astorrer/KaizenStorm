@@ -1,10 +1,12 @@
 class SuggestionsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_suggestion, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
   def index
-    @suggestions = Suggestion.all
+    @suggestions = current_user.suggestions.all
     respond_with(@suggestions)
   end
 
@@ -22,6 +24,7 @@ class SuggestionsController < ApplicationController
 
   def create
     @suggestion = Suggestion.new(suggestion_params)
+    @suggestion.user_id = current_user.id # Set the suggestion's user ID, the lazy way.
     @suggestion.save
     respond_with(@suggestion)
   end

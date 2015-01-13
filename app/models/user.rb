@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   after_create :assign_submitter_role
   after_create :assign_active_state
 
+  has_many :suggestions
+
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
