@@ -3,8 +3,8 @@ module DynamicSelect
     respond_to :json
 
     def index
-      @departments = Department.where(:facility_id => params[:facility_id])
-      respond_with(@departments)
+      departments = Department.where(:facility_id => params[:facility_id])
+      respond_with(departments)
     end
   end
 end

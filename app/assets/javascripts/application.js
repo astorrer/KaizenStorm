@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require bootstrap.min
+//= require plugins/dataTables/jquery.dataTables.js
+//= require plugins/dataTables/dataTables.bootstrap.js
 //= require_tree .
+
+  $(document).ready( function () {
+      $('#datatable').DataTable();
+  } );
