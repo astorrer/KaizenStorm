@@ -12,12 +12,14 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
-
+# Use devise for authentication
 gem 'devise'
 gem 'responders'
 gem 'rolify'
 gem 'cancancan'
 gem 'pg'
+
+gem 'rails_12factor'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
