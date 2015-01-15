@@ -1,15 +1,25 @@
 Rails.application.routes.draw do
-  resources :suggestions
-
-  resources :departments
+  root 'static_pages#home'
 
   resources :facilities
+
+  resources :departments
 
   namespace :dynamic_select do
     get ':facility_id/departments', to: 'departments#index', as: 'departments'
   end
 
-  root 'static_pages#home'
+  resources :suggestions do
+    member do
+     post 'promote_to_reviewed' 
+     post 'promote_to_completed'
+     post 'promote_to_verified'
+     post 'promote_to_funded'
+     post 'revise_status'
+     post 'hold_status'
+     post 'meets_the_theme'
+    end
+  end
 
   devise_for :users
 

@@ -32,12 +32,12 @@
           Suggestions
       %li
         = link_to departments_path do
-          %i.fa.fa-fw.fa-square
+          %i.fa.fa-fw.fa-suitcase
           Departments
       %li
         %a{"data-target" => "#facilities", "data-toggle" => "collapse", :href => "javascript:;"}
           %i.fa.fa-fw.fa-building-o
-          Facilities
+          Facilities 
           %i.fa.fa-fw.fa-caret-down
         %ul#facilities.collapse
           - Facility.find_each do |facility|

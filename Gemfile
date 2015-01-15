@@ -42,6 +42,8 @@ group :development, :test do
   # Use FactoryGirl instead of Fixtures
   gem "factory_girl_rails", "~> 4.4.1"
 
+  gem 'meta_request'
+  
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
