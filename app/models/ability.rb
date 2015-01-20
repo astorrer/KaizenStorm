@@ -7,9 +7,15 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     elsif user.has_role? :reviewer
-      can :manage, :all
+      can :read, :facilities
+      can :read, :departments
+      can :read, :role
+      can :access, :suggestions
     elsif user.has_role? :submitter
-      can :manage, :all
+      can :read, :facilities
+      can :read, :departments
+      can :read, :role
+      can :access, :suggestions, :user_id => user.id
     end
 
     # Define abilities for the passed in user here. For example:
