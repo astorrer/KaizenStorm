@@ -30,25 +30,29 @@
         = link_to suggestions_path do
           %i.fa.fa-fw.fa-comments-o
           Suggestions
-      %li
-        = link_to departments_path do
-          %i.fa.fa-fw.fa-suitcase
-          Departments
-      %li
-        %a{"data-target" => "#facilities", "data-toggle" => "collapse", :href => "javascript:;"}
-          %i.fa.fa-fw.fa-building-o
-          Facilities 
-          %i.fa.fa-fw.fa-caret-down
-        %ul#facilities.collapse
-          - Facility.find_each do |facility|
-            %li
-              = link_to facility do
-                = facility.name
-          %li
-            = link_to facilities_path do
-              Manage Facilities
-              %i.fa.fa-fw.fa-plus
-      %li
-        = link_to users_path do
-          %i.fa.fa-fw.fa-user
-          Users
+      - if (current_user.has_role? :admin) || (current_user.has_role? :reviewer)
+        %li
+          = link_to departments_path do
+            %i.fa.fa-fw.fa-suitcase
+            Departments
+      - if (current_user.has_role? :admin) || (current_user.has_role? :reviewer)
+        %li
+          %a{"data-target" => "#facilities", "data-toggle" => "collapse", :href => "javascript:;"}
+            %i.fa.fa-fw.fa-building-o
+            Facilities 
+            %i.fa.fa-fw.fa-caret-down
+          %ul#facilities.collapse
+            - Facility.find_each do |facility|
+              %li
+                = link_to facility do
+                  = facility.name
+            - if (current_user.has_role? :admin)
+              %li
+                = link_to facilities_path do
+                  Manage Facilities
+                  %i.fa.fa-fw.fa-plus
+      - if (current_user.has_role? :admin) || (current_user.has_role? :reviewer)
+        %li
+          = link_to users_path do
+            %i.fa.fa-fw.fa-user
+            Users
