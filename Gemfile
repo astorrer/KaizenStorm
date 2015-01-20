@@ -4,8 +4,8 @@ ruby '2.1.5'
 gem 'rails', '4.2.0.rc2'
 # Use HAML as the default templating language
 gem 'haml-rails'
-# Use less for stylesheets
-gem 'less-rails'
+# Use sass for stylesheets
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
