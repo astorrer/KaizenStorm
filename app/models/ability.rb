@@ -7,11 +7,11 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     elsif user.has_role? :reviewer
-      can :read, :facilities
-      can :read, :departments
-      can :read, :role
-      can :access, :suggestions
+      can :read, :all
+      can :manage, Suggestion
+      can :manage, Department
     elsif user.has_role? :submitter
+      can :read, :all
       can :manage, Suggestion, :user_id => user.id
     end
 
