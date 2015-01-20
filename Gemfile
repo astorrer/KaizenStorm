@@ -18,10 +18,6 @@ gem 'responders'
 # Use Rolify + CanCanCan to control user access
 gem 'rolify'
 gem 'cancancan'
-# Use Posgresql in production
-gem 'pg'
-# Configure for heroku
-gem 'rails_12factor'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -31,8 +27,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "font-awesome-rails"
 
-gem 'rails_serve_static_assets'
-gem 'rails_stdout_logging'
+group :production do
+  # Use Posgresql in production
+  gem 'pg'
+  # Configure for heroku
+  gem 'rails_12factor'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
