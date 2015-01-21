@@ -24,7 +24,7 @@
                 = link_to user, class: 'btn btn-default btn-sm' do
                   %i.fa.fa-fw.fa-external-link
                 - if user.has_role? 'admin'
-                  = link_to demote_from_admin_role_user_path(user), :method => :post, class: 'btn btn-info btn-sm' do
+                  = link_to demote_from_admin_role_user_path(user), :method => :post, class: 'btn btn-info btn-sm', :data => { :confirm => 'Are you sure?' } do
                     %i.fa.fa-fw.fa-unlock
                 - else
                   = link_to assign_admin_role_user_path(user), :method => :post, class: 'btn btn-default btn-sm' do
