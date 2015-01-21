@@ -41,8 +41,9 @@
                       %tr
                         %td= suggestion.id
                         %td
-                          = link_to suggestion_path(suggestion), class: 'btn btn-default btn-sm' do
-                            View
+                          .btn-group                          
+                            = link_to suggestion_path(suggestion), class: 'btn btn-default btn-sm' do
+                              View
                           .btn-group
                             - unless suggestion.hold?
                               = link_to hold_status_suggestion_path(suggestion), :method => :post, class: 'btn btn-primary btn-sm' do
