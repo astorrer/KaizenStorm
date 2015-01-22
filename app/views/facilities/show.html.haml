@@ -82,9 +82,26 @@
                           = link_to suggestion_path(suggestion), class: 'btn btn-default btn-sm' do
                             View
                           .btn-group
-                            = link_to promote_to_completed_suggestion_path(suggestion), :method => :post, class: 'btn btn-default btn-sm' do
-                              Complete 
-                              %i.fa.fa-fw.fa-arrow-right
+                            - unless suggestion.hold?
+                              = link_to hold_status_suggestion_path(suggestion), :method => :post, class: 'btn btn-primary btn-sm' do
+                                Place on Hold
+                            - else
+                              .btn.btn-primary.btn-sm.disabled
+                                On Hold
+                            - unless suggestion.revision?
+                              = link_to revise_status_suggestion_path(suggestion), :method => :post, class: 'btn btn-primary btn-sm' do
+                                Mark for Revision
+                            - else
+                              .btn.btn-primary.btn-sm.disabled
+                                Awaiting Revision
+                          .btn-group
+                            - unless suggestion.hold? || suggestion.revision?
+                              = link_to promote_to_completed_suggestion_path(suggestion), :method => :post, class: 'btn btn-default btn-sm' do
+                                Complete 
+                                %i.fa.fa-fw.fa-arrow-right
+                            -else
+                              .btn.btn-default.btn-sm.disabled
+                                Awaiting Resubmission
                             = link_to suggestion, :method => :delete, class: 'btn btn-danger btn-sm', :data => { :confirm => 'Are you sure?' } do
                               %i.fa.fa-fw.fa-trash
             #tab3.tab-pane.fade.in

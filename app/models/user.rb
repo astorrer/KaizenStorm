@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   after_create :assign_submitter_role
   after_create :assign_active_state
 
-  has_many :suggestions
+  has_many :suggestions, dependent: :destroy
 
   rolify
   # Include default devise modules. Others available are:
