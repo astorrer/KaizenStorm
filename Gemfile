@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.1.5'
+ruby '2.4.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0.rc2'
+gem 'rails'
 # Use HAML as the default templating language
 gem 'haml-rails'
 # Use sass for stylesheets
