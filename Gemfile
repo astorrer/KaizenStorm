@@ -45,7 +45,6 @@ end
 
 group :development, :test do
   # Use Rspec instead of TEST:Unit
-  gem "rspec-rails", "~> 3.1.0"
   # Use FactoryGirl instead of Fixtures
   gem "factory_girl_rails", "~> 4.4.1"
 
@@ -62,6 +61,8 @@ group :development, :test do
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  
+  gem 'rails-erd'
 end
 
 group:test do
