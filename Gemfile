@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.0'
+#ruby '2.4.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use HAML as the default templating language
@@ -13,7 +13,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 # Use devise for authentication
-gem 'devise'
+gem 'devise', '~> 3.2.3'
 gem 'responders'
 # Use Rolify + CanCanCan to control user access
 gem 'rolify'
@@ -61,7 +61,7 @@ group :development, :test do
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-  
+
   gem 'rails-erd'
 end
 
